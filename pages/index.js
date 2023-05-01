@@ -54,12 +54,12 @@ export default function Home() {
       <main className="  h-screen items-center flex justify-center">
         <form
           onSubmit={formik.handleSubmit}
-          className="bg-white flex drop-shadow-xl rounded-lg w-1/2 font-latoRegular"
+          className="bg-white flex drop-shadow-xl rounded-lg w-4/5 font-latoRegular"
         >
-          <div className="flex-1 text-gray-700  p-20">
+          <div className="flex-1 text-gray-700  p-10">
             <div className="flex items-center border-b border-violet-800 py-2">
               <input
-                className="appearance-none border-none bg-transparent  w-full text-gray-700 mr-4 py-1 px-2 leading-tight focus:outline-none"
+                className="appearance-none border-none bg-transparent  w-full text-gray-700 mr-1 py-1 px-2 leading-tight focus:outline-none"
                 ref={ref}
                 aria-label="Full name"
                 placeholder="Enter your name"
@@ -70,11 +70,11 @@ export default function Home() {
               />
 
               <button
-                className="flex-shrink-0 border-transparent border-4 text-violet-800 hover:text-violet-950 text-sm py-1 px-2 rounded"
+                className="flex-shrink-0 border-transparent text-violet-800 hover:text-violet-950 font-bold rounded"
                 type="button"
                 onClick={handleClick}
               >
-                Clear
+                X
               </button>
             </div>
             <div className="mt-5 ">

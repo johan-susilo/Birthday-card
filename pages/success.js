@@ -23,7 +23,7 @@ export default function Success() {
       exit={{ opacity: 0 }}
       className=" h-screen items-center flex justify-center relative"
     >
-      <div className="bg-white rounded-lg drop-shadow-xl w-4/5 font-latoRegular text-gray-700 p-16">
+      <div className="bg-white rounded-lg drop-shadow-xl w-4/5 font-latoRegular text-gray-700 p-10">
         <h1 className="text-3xl pb-4 font-latoBold">
           Today is all about you {router.query.name}! 🎉
         </h1>
@@ -31,8 +31,9 @@ export default function Success() {
           Happy birthday to someone who holds a very special place in my heart.
           You bring so much joy and happiness to my life, and I&#39;m grateful
           for every moment we spend together. Today and always, I wish you all
-          the love, blessings, and happiness in the world. —Johan
+          the love, blessings, and happiness in the world.
         </p>
+        <p className="text-md mt-2"> —Johan</p>
       </div>
       <Confetti gravity={0.2} numberOfPieces={pieces} />
     </m.main>
