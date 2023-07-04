@@ -37,7 +37,7 @@ export default function Success({ birthdayCards }) {
   //   .filter((card) => card.fields.code == router.query.name)
   //   .map((card) => card.fields.name);
 
-  // console.log(inside);
+  // console.log(insides);
 
   return (
     <m.main
