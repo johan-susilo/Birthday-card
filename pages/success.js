@@ -3,6 +3,7 @@ import { motion as m } from 'framer-motion';
 import Confetti from 'react-confetti';
 import { useState, useEffect } from 'react';
 import { createClient } from 'contentful';
+import Image from 'next/image';
 
 export async function getStaticProps() {
   const client = createClient({
@@ -21,7 +22,7 @@ export async function getStaticProps() {
 
 export default function Success({ birthdayCards }) {
   const [pieces, setPieces] = useState(200);
-  console.log(birthdayCards);
+  // console.log(birthdayCards);
   const stopConfetti = () => {
     setTimeout(() => {
       setPieces(0);
@@ -44,10 +45,10 @@ export default function Success({ birthdayCards }) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className=" h-screen items-center flex justify-center relative"
+      className=" h-full items-center flex justify-center relative m-10"
     >
       {birthdayCards
-        .filter((card) => card.fields.code == router.query.name)
+        .filter((card) => card.fields.code == router.query.code)
         .map((card) => (
           <div
             key={card.sys.id}
@@ -57,6 +58,15 @@ export default function Success({ birthdayCards }) {
               {card.fields.title}! 🎉
             </h1>
             <p className="text-lg  text-gray-500">{card.fields.text}</p>
+
+            {
+              <Image
+                src={'https:' + card.fields.thumbnail.fields.file.url}
+                width={card.fields.thumbnail.fields.file.details.image.width}
+                height={card.fields.thumbnail.fields.file.details.image.height}
+              />
+            }
+
             <p className="text-md mt-2"> —Johan 典漢</p>
           </div>
         ))}
