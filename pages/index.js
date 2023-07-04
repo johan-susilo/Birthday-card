@@ -62,7 +62,7 @@ export default function Home() {
                 className="appearance-none border-none bg-transparent  w-full text-gray-700 mr-1 py-1 px-2 leading-tight focus:outline-none"
                 ref={ref}
                 aria-label="Full name"
-                placeholder="Enter your name"
+                placeholder="Enter the code"
                 onChange={formik.handleChange}
                 value={formik.values.name}
                 onBlur={formik.handleBlur}
