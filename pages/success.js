@@ -125,8 +125,11 @@ export default function Success({ birthdayCards }) {
             <div className="bg-white rounded-lg drop-shadow-xl w-5/6 font-latoRegular text-gray-700 m-auto p-20">
               <div className="flex justify-center">
                 <h1 className="text-6xl pb-4 font-latoBold">
-                  Sorry incorrect code!
+                  Wait a moment...
                 </h1>
+              </div>
+              <div className="flex justify-left">
+                <h1 className="text-xl pb-4 font-lato">incorrect code</h1>
               </div>
               <div className="flex justify-center"></div>
 
