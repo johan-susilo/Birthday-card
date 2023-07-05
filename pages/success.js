@@ -40,6 +40,19 @@ export default function Success({ birthdayCards }) {
 
   // console.log(insides);
 
+  // if (birthdayCards.includes(thumbnail)) {
+  //   console.log('hello');
+  // }
+
+  // const exist = birthdayCards.map((card) => {
+  //   for (properties in card.fields) {
+  //     count += 1;
+  //   }
+  // });
+
+  // var count = Object.keys(birthdayCards).length;
+  // console.log(count);
+
   return (
     <m.main
       initial={{ opacity: 0 }}
@@ -59,13 +72,16 @@ export default function Success({ birthdayCards }) {
             </h1>
             <p className="text-lg  text-gray-500">{card.fields.text}</p>
 
-            {
+            {Object.keys(card.fields).includes('thumbnail') ? (
               <Image
                 src={'https:' + card.fields.thumbnail.fields.file.url}
                 width={card.fields.thumbnail.fields.file.details.image.width}
                 height={card.fields.thumbnail.fields.file.details.image.height}
+                alt=""
               />
-            }
+            ) : (
+              ''
+            )}
 
             <p className="text-md mt-2"> —Johan 典漢</p>
           </div>
