@@ -26,6 +26,11 @@ a {
   text-decoration: none;
 }
 
+p {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 * {
   box-sizing: border-box;
 }

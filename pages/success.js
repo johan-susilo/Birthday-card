@@ -4,6 +4,7 @@ import Confetti from 'react-confetti';
 import { useState, useEffect } from 'react';
 import { createClient } from 'contentful';
 import Image from 'next/image';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
 export async function getStaticProps() {
   const client = createClient({
@@ -22,7 +23,7 @@ export async function getStaticProps() {
 
 export default function Success({ birthdayCards }) {
   const [pieces, setPieces] = useState(200);
-  // console.log(birthdayCards);
+  console.log(birthdayCards);
   const stopConfetti = () => {
     setTimeout(() => {
       setPieces(0);
@@ -58,35 +59,44 @@ export default function Success({ birthdayCards }) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className=" h-full items-center flex justify-center relative m-10"
+      className=" flex h-full justify-center items-center min-[430px]:my-12 w-full p-auto top-0 bottom-0 left-0 right-0"
     >
-      {birthdayCards
-        .filter((card) => card.fields.code == router.query.code)
-        .map((card) => (
-          <div
-            key={card.sys.id}
-            className="bg-white rounded-lg drop-shadow-xl w-4/5 font-latoRegular text-gray-700 p-10"
-          >
-            <h1 className="text-3xl pb-4 font-latoBold">
-              {card.fields.title}! 🎉
-            </h1>
-            <p className="text-lg  text-gray-500">{card.fields.text}</p>
+      <div className="min-h-screen flex justify-center items-center relative">
+        {birthdayCards
+          .filter((card) => card.fields.code == router.query.code)
+          .map((card) => (
+            <div
+              key={card.sys.id}
+              className="bg-white rounded-lg drop-shadow-xl w-5/6 font-latoRegular text-gray-700 m-auto p-10"
+            >
+              <h1 className="text-3xl pb-4 font-latoBold">
+                {card.fields.title}! 🎉
+              </h1>
+              <div className="text-lg  text-gray-500">
+                {documentToReactComponents(card.fields.rich)}
+              </div>
 
-            {Object.keys(card.fields).includes('thumbnail') ? (
-              <Image
-                src={'https:' + card.fields.thumbnail.fields.file.url}
-                width={card.fields.thumbnail.fields.file.details.image.width}
-                height={card.fields.thumbnail.fields.file.details.image.height}
-                alt=""
-              />
-            ) : (
-              ''
-            )}
+              {Object.keys(card.fields).includes('thumbnail') ? (
+                <div className="flex justify-center py-10">
+                  <Image
+                    src={'https:' + card.fields.thumbnail.fields.file.url}
+                    width={
+                      card.fields.thumbnail.fields.file.details.image.width
+                    }
+                    height={
+                      card.fields.thumbnail.fields.file.details.image.height
+                    }
+                    alt={card.fields.thumbnail.fields.title}
+                  />
+                </div>
+              ) : (
+                ''
+              )}
 
-            <p className="text-md mt-2"> —Johan 典漢</p>
-          </div>
-        ))}
-
+              <p className="text-md mt-2"> —Johan 典漢</p>
+            </div>
+          ))}
+      </div>
       <Confetti gravity={0.2} numberOfPieces={pieces} />
     </m.main>
   );
