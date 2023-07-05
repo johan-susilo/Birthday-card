@@ -82,7 +82,7 @@ export default function Success({ birthdayCards }) {
                   className="bg-white rounded-lg drop-shadow-xl w-5/6 font-latoRegular text-gray-700 m-auto p-10"
                 >
                   <h1 className="text-3xl pb-4 font-latoBold">
-                    {card.fields.title}! 🎉
+                    {card.fields.title}
                   </h1>
                   <div className="text-lg  text-gray-500">
                     {documentToReactComponents(card.fields.rich)}
@@ -105,7 +105,7 @@ export default function Success({ birthdayCards }) {
                     ''
                   )}
 
-                  <p className="text-md mt-2"> —Johan 典漢</p>
+                  <p className="text-md mt-2">{card.fields.from}</p>
                   <button
                     onClick={handleClick}
                     className="bg-violet-800 hover:bg-violet-900 font-latoBold text-sm text-white py-3 mt-6 rounded-lg w-full"
