@@ -36,7 +36,6 @@ export default function Index({ birthdayCards }) {
   const formik = useFormik({
     initialValues: {
       code: '',
-      exist: false,
     },
 
     // validationSchema: Yup.object({
@@ -65,7 +64,7 @@ export default function Index({ birthdayCards }) {
     (card) => card.fields.code === formik.values.code
   );
 
-  // console.log(exist);
+  // console.log(correct);
 
   return (
     <m.div
