@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { motion as m } from 'framer-motion';
 import Confetti from 'react-confetti';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { createClient } from 'contentful';
 import Image from 'next/image';
 
@@ -90,16 +90,26 @@ export default function Success({ birthdayCards }) {
 
                   {Object.keys(card.fields).includes('thumbnail') ? (
                     <div className="flex justify-center py-10">
-                      <Image
-                        src={'https:' + card.fields.thumbnail.fields.file.url}
-                        width={
-                          card.fields.thumbnail.fields.file.details.image.width
+                      <Suspense
+                        fallback={
+                          <span className="loader">
+                            <span className="loader-inner"></span>
+                          </span>
                         }
-                        height={
-                          card.fields.thumbnail.fields.file.details.image.height
-                        }
-                        alt={card.fields.thumbnail.fields.title}
-                      />
+                      >
+                        <Image
+                          src={'https:' + card.fields.thumbnail.fields.file.url}
+                          width={
+                            card.fields.thumbnail.fields.file.details.image
+                              .width
+                          }
+                          height={
+                            card.fields.thumbnail.fields.file.details.image
+                              .height
+                          }
+                          alt={card.fields.thumbnail.fields.title}
+                        />
+                      </Suspense>
                     </div>
                   ) : (
                     ''
@@ -108,15 +118,23 @@ export default function Success({ birthdayCards }) {
                   <p className="text-md mt-2">{card.fields.from}</p>
                   <button
                     onClick={handleClick}
-                    className="bg-violet-800 hover:bg-violet-900 font-latoBold text-sm text-white py-3 mt-6 rounded-lg w-full"
+                    className="flex bg-violet-800 items-center justify-center hover:bg-violet-900 font-latoBold text-sm text-white py-3 mt-6 rounded-lg w-full"
                   >
+                    <div class="loader mr-5">
+                      <div class="loader-inner"></div>
+                    </div>
                     I am done!
                   </button>
                 </div>
               ))}
           </div>
           {exist == true ? (
-            <Confetti gravity={0.2} numberOfPieces={pieces} />
+            <Confetti
+              height={document.documentElement.scrollHeight}
+              width={document.documentElement.scrollWidth}
+              gravity={0.2}
+              numberOfPieces={pieces}
+            />
           ) : null}
         </m.main>
       ) : (
