@@ -1,4 +1,4 @@
-This is a birthday card web application side project that I used so I can give to my online friends during Covid-19 era. You need to enter the code, and then you can read the card I wrote for you.
+This is a birthday card web application side project that I used so I could give to my online friends during the COVID-19 era. You need to enter the code, and then you can read the card I wrote for you.
 
 
 
