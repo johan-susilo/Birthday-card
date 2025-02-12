@@ -1,3 +1,7 @@
+This is a birthday card web application side project that I used so I can give to my online friends during Covid-19 era. You need to enter the code, and then you can read the card I wrote for you.
+
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
